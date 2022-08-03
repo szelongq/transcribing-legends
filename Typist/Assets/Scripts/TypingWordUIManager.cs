@@ -11,6 +11,7 @@ public class TypingWordUIManager : MonoBehaviour
 
     string targetWord;
     string typedWord;
+    string remWord; // remaining word
 
     // Start is called before the first frame update
     void Start()
@@ -22,23 +23,26 @@ public class TypingWordUIManager : MonoBehaviour
     void Update()
     {
         targetWordText.text = targetWord;
-        typedWordText.text = typedWord;
+        typedWordText.text = "<b>" + typedWord + "</b>";
     }
 
     public void loadTargetWord(string word)
     {
         targetWord = word;
         typedWord = "";
+        remWord = word;
     }
 
     public void addCorrectLetter(char c)
     {
         typedWord += "<color=green>" + c + "</color>";
+        remWord = remWord.Substring(1);
     }
 
     public void addWrongLetter(char c)
     {
         typedWord += "<color=red>" + c + "</color>";
+        remWord = remWord.Substring(1);
     }
     
 }

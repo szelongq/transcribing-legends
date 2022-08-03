@@ -20,7 +20,7 @@ public class TypeSensor : MonoBehaviour
         startNewWord();
     }
 
-    void startNewWord()
+    public void startNewWord()
     {
         targetWord = wordBankManager.getRandomWord();
         index = 0;
@@ -43,7 +43,7 @@ public class TypeSensor : MonoBehaviour
         }
         else
         {
-            wordUIManager.addWrongLetter(c);
+            wordUIManager.addWrongLetter(targetWord[index]);
         }
         index += 1;
     }
@@ -57,10 +57,7 @@ public class TypeSensor : MonoBehaviour
 
         foreach(char c in Input.inputString)
         {
-            if (char.IsLetter(c))
-            {
-                checkLetter(c);
-            }
+            checkLetter(c);
         }
     }
 
