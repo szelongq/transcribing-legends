@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     public int correctChars;
     public int wrongChars;
-    public int highestCombo;
+    public int maxCombo;
 
     public float accuracy;
 
@@ -36,13 +36,13 @@ public class ScoreManager : MonoBehaviour
         currentCombo = 0;
         correctChars = 0;
         wrongChars = 0;
-        highestCombo = 0;
+        maxCombo = 0;
     }
 
     public void addCorrectChar()
     {
         currentCombo += 1;
-        highestCombo = Math.Max(highestCombo, currentCombo);
+        maxCombo = Math.Max(maxCombo, currentCombo);
         correctChars += 1;
         currentScore += currentCombo * 10;
         accuracy = GetAccuracy();
@@ -60,9 +60,9 @@ public class ScoreManager : MonoBehaviour
         return currentScore;
     }
 
-    public int GetHighestCombo()
+    public int GetMaxCombo()
     {
-        return highestCombo;
+        return maxCombo;
     }
 
     public float GetAccuracy()
@@ -85,6 +85,12 @@ public class ScoreManager : MonoBehaviour
     public float GetNetWPM(float duration)
     {
         return (((float) (correctChars + wrongChars) / 5) - wrongChars) * 60 / duration;
+    }
+
+    public string GetFullSummary(float duration)
+    {
+        return string.Format("Score: {0}, Max Combo: {1}, Accuracy: {2:F2}%, Gross WPM: {3:F0}, Net WPM: {4:F0}, correctChars: {5}, wrongChars: {6}", 
+            currentScore, maxCombo, accuracy, GetGrossWPM(duration), GetNetWPM(duration), correctChars, wrongChars);
     }
 
 }

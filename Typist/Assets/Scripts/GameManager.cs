@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeSensor : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 
     string targetWord;
@@ -20,6 +20,9 @@ public class TypeSensor : MonoBehaviour
 
     [SerializeField]
     ScoreManager scoreManager;
+
+    [SerializeField]
+    ResultsUIManager resultsManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -50,13 +53,14 @@ public class TypeSensor : MonoBehaviour
     {
         isPaused = true;
         Debug.Log("Game Over");
+        float totalTime = timeManager.GetTotalTime();
         int score = scoreManager.GetScore();
-        int highestCombo = scoreManager.GetHighestCombo();
+        int maxCombo = scoreManager.GetMaxCombo();
         float accuracy = scoreManager.GetAccuracy();
-        float grossWPM = scoreManager.GetGrossWPM(timeManager.GetTotalTime());
-        float netWPM = scoreManager.GetNetWPM(timeManager.GetTotalTime());
-        Debug.Log(string.Format("Score: {0:00000000}, MaxCombo: {1}, Accuracy: {2:F2}%, Gross WPM: {3:F0}, Net WPM: {4:F0}", 
-            score, highestCombo, accuracy, grossWPM, netWPM));
+        float grossWPM = scoreManager.GetGrossWPM(totalTime);
+        float netWPM = scoreManager.GetNetWPM(totalTime);
+        Debug.Log(scoreManager.GetFullSummary(totalTime));
+        resultsManager.ShowResults(score, maxCombo, accuracy, grossWPM, netWPM);
     }
 
     public void startNewWord()
