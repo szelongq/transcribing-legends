@@ -7,6 +7,7 @@ public class TypeSensor : MonoBehaviour
 
     string targetWord;
     int index;
+    bool isPaused;
 
     [SerializeField]
     TypingWordUIManager wordUIManager;
@@ -14,10 +15,48 @@ public class TypeSensor : MonoBehaviour
     [SerializeField]
     WordBankManager wordBankManager;
 
+    [SerializeField]
+    TimerUIManager timeManager;
+
+    [SerializeField]
+    ScoreManager scoreManager;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
+    {
+        targetWord = "";
+        index = 0;
+        isPaused = true;
+    }
+
+    public void StartGame()
     {
         startNewWord();
+        isPaused = false;
+        Debug.Log("Game Start");
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+    }
+
+    public void EndGame()
+    {
+        isPaused = true;
+        Debug.Log("Game Over");
+        int score = scoreManager.GetScore();
+        int highestCombo = scoreManager.GetHighestCombo();
+        float accuracy = scoreManager.GetAccuracy();
+        float grossWPM = scoreManager.GetGrossWPM(timeManager.GetTotalTime());
+        float netWPM = scoreManager.GetNetWPM(timeManager.GetTotalTime());
+        Debug.Log(string.Format("Score: {0:00000000}, MaxCombo: {1}, Accuracy: {2:F2}%, Gross WPM: {3:F0}, Net WPM: {4:F0}", 
+            score, highestCombo, accuracy, grossWPM, netWPM));
     }
 
     public void startNewWord()
@@ -40,34 +79,34 @@ public class TypeSensor : MonoBehaviour
         if (c == targetWord[index])
         {
             wordUIManager.addCorrectLetter(c);
+            scoreManager.addCorrectChar();
         }
         else
         {
             wordUIManager.addWrongLetter(targetWord[index]);
+            scoreManager.addWrongChar();
         }
         index += 1;
     }
 
     void Update()
     {
-        if (Input.inputString.Length > 0)
+        if (!isPaused)
         {
-            Debug.Log("Typed: " + Input.inputString);
-        }
+            if (Input.inputString.Length > 0)
+            {
+                Debug.Log("Typed: " + Input.inputString);
+            }
 
-        foreach(char c in Input.inputString)
-        {
-            checkLetter(c);
+            foreach(char c in Input.inputString)
+            {
+                checkLetter(c);
+            }
+
+            if (timeManager.IsTimesUp())
+            {
+                EndGame();
+            }
         }
     }
-
-    // void OnGUI()
-    // {
-    //     Event e = Event.current;
-    //     if (e.type == EventType.KeyDown && e.keyCode.ToString().Length == 1 && char.IsLetter(e.keyCode.ToString()[0]))
-    //     {
-    //         Debug.Log("Detected key code: " + e.keyCode);
-    //         checkLetter(e.keyCode.ToString()[0]);
-    //     }
-    // }
 }

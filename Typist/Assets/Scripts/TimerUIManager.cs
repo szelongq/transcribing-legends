@@ -10,14 +10,15 @@ public class TimerUIManager : MonoBehaviour
     TMP_Text timerText;
 
     bool isTimerRunning;
+    float totalTime;
     float timeLeft;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isTimerRunning = false;
+        totalTime = 0f;
         timeLeft = 0f;
-        StartTimer(5f);
     }
 
     // Update is called once per frame
@@ -37,7 +38,18 @@ public class TimerUIManager : MonoBehaviour
 
     public void StartTimer(float timeGiven)
     {
+        totalTime = timeGiven;
         timeLeft = timeGiven;
+        isTimerRunning = true;
+    }
+
+    public void PauseTimer()
+    {
+        isTimerRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
         isTimerRunning = true;
     }
 
@@ -46,6 +58,16 @@ public class TimerUIManager : MonoBehaviour
         isTimerRunning = false;
         timeLeft = 0f;
 
+    }
+
+    public float GetTotalTime()
+    {
+        return totalTime;
+    }
+
+    public bool IsTimesUp()
+    {
+        return timeLeft == 0;
     }
 
     void DisplayTime(float timeLeft)
