@@ -20,11 +20,17 @@ public class WordBankManager : MonoBehaviour
         wordBankDir = Path.Combine(Application.streamingAssetsPath, wordBankFolderName);
         wordBankFile = Path.Combine(Application.streamingAssetsPath, wordBankFolderName,
             wordBankFileName);  // WordBank/WordBank.json
+        loadWordBank();
     }
 
     void Start()
     {
-        loadWordBank();
+        
+    }
+
+    public string getRandomWord()
+    {
+        return wordBank.words[Random.Range(0, wordBank.words.Length)];
     }
 
     public void loadWordBank()
