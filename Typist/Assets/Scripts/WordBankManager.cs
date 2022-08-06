@@ -15,7 +15,7 @@ public class WordBankManager : MonoBehaviour
     [SerializeField]
     WordBank wordBank;
 
-    string[] currWordLib;
+    Word[] currWordLib;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class WordBankManager : MonoBehaviour
         UsePokemonNoisesWordLib();
     }
 
-    public string getRandomWord()
+    public Word getRandomWord()
     {
         return currWordLib[Random.Range(0, currWordLib.Length)];
     }

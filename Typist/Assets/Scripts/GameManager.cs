@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     string targetWord;
     int index;
     bool isPaused;
@@ -86,9 +85,10 @@ public class GameManager : MonoBehaviour
 
     public void startNewWord()
     {
-        targetWord = wordBankManager.getRandomWord();
+        Word wordToType = wordBankManager.getRandomWord();
+        targetWord = wordToType.word;
         index = 0;
-        wordUIManager.loadTargetWord(targetWord);
+        wordUIManager.loadTargetWord(wordToType);
     }
 
     void checkLetter(char c)
