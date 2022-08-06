@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     string targetWord;
     int index;
     bool isPaused;
-    const float GAME_DURATION = 10;
+    const float GAME_DURATION = 30;
 
     [SerializeField]
     GameObject pausePanel;

@@ -26,7 +26,7 @@ public class TypingWordUIManager : MonoBehaviour
     {
         targetWordText.text = targetWord.word;
         typedWordText.text = typedWord;
-        sourceText.text = "-" + targetWord.source;
+        sourceText.text = "- " + targetWord.source;
     }
 
     public void loadTargetWord(Word word)
