@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     string targetWord;
     int index;
     bool isPaused;
+    const float GAME_DURATION = 10;
 
     [SerializeField]
     TypingWordUIManager wordUIManager;
@@ -34,9 +35,12 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        scoreManager.ResetScore();
         startNewWord();
         isPaused = false;
+        timeManager.StartTimer(GAME_DURATION);
         Debug.Log("Game Start");
+
     }
 
     public void PauseGame()
@@ -61,6 +65,14 @@ public class GameManager : MonoBehaviour
         float netWPM = scoreManager.GetNetWPM(totalTime);
         Debug.Log(scoreManager.GetFullSummary(totalTime));
         resultsManager.ShowResults(score, maxCombo, accuracy, grossWPM, netWPM);
+    }
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
     }
 
     public void startNewWord()
