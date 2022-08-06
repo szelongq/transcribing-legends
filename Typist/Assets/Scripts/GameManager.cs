@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     GameObject pausePanel;
 
     [SerializeField]
+    CountdownManager countdownManager;
+
+    [SerializeField]
     TypingWordUIManager wordUIManager;
 
     [SerializeField]
@@ -40,9 +43,10 @@ public class GameManager : MonoBehaviour
     {
         scoreManager.ResetScore();
         startNewWord();
-        isPaused = false;
-        timeManager.StartTimer(GAME_DURATION);
-        Debug.Log("Game Start");
+        timeManager.SetTimer(GAME_DURATION);
+        Debug.Log("Game Starting");
+        countdownManager.gameObject.SetActive(true);
+        countdownManager.StartCountdown();
 
     }
 

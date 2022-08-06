@@ -53,7 +53,7 @@ public class CountdownManager : MonoBehaviour
     public void StopCountdown() {
         isCountingDown = false;
         countdownTime = 0f;
-        gameManager.StartGame();
+        gameManager.ResumeGame();
         gameObject.SetActive(false);
     }
 

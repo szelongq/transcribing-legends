@@ -36,6 +36,12 @@ public class TimerUIManager : MonoBehaviour
         DisplayTime(timeLeft);
     }
 
+    public void SetTimer(float timeGiven)
+    {
+        totalTime = timeGiven;
+        timeLeft = timeGiven;
+    }
+
     public void StartTimer(float timeGiven)
     {
         totalTime = timeGiven;
