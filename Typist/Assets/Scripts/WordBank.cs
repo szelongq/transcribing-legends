@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class WordBank
 {
-    public string[] words;
+    public Word[] words;
 
-
+    public Word[] pokemonNoises;
+    
 }

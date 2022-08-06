@@ -1,7 +1,282 @@
 {
     "words": [
-        "All men dream - but not equally. Those who dream by night, in the dusty recesses of their minds, wake in the day to find that it was vanity… But the dreamers of the day are dangerous men, for they may act their dream with open eyes, to make it possible. This I did.",
-        "My past is not a memory. It's a force at my back. It pushes and steers. I may not always like where it leads me, but like any story, the past needs resolution. What's past is prologue.",
-        "What is a man? A Miserable little pile of secrets!"
+        {
+            "word": "What is a man? A miserable little pile of secrets.",
+            "source": "Dracula, Castlevania: Symphony of the Night"
+        },
+        {
+            "word": "It's super effective!" ,
+            "source": "Pokemon series"
+        },
+        {
+            "word": "Ah shit, here we go again…",
+            "source": "CJ, GTA San Andreas"
+        },
+        {
+            "word": "YOU DIED",
+            "source": "Dark Souls"
+        },
+        {
+            "word": "It's dangerous to go alone! Take this",
+            "source": "Unnamed Old Man, The Legend of Zelda"
+        },
+        {
+            "word": "The cake is a lie",
+            "source": "Portal (2007)"
+        },
+        {
+            "word": "I used to be an adventurer like you. Then I took an arrow to the knee...",
+            "source": "Town Guard, The Elder Scrolls V: Skyrim"
+        },
+        {
+            "word": "What is better? To be born good or to overcome your evil nature through great effort?",
+            "source": "Paarthurnax, The Elder Scrolls 5: Skyrim"
+        },
+        {
+            "word": "Stand in the ashes of a trillion dead souls, and asks the ghosts if honor matters. The silence is your answer.",
+            "source": "Javik, Mass Effect 3"
+        },
+        {
+            "word": "The healthy human mind doesn't wake up in the morning thinking this is its last day on Earth. But I think that's a luxury, not a curse. To know you're close to the end is a kind of freedom. Good time to take... inventory." ,
+            "source": "Captain Price, Call of Duty: Modern Warfare 2"
+        },
+        {
+            "word": "It's a funny thing, ambition. It can take one to sublime heights or harrowing depths. And sometimes they are one and the same.",
+            "source": "Emily Kaldwin, Dishonored"
+        },
+        {
+            "word": "A hero need not speak. When he is gone, the world will speak for him.",
+            "source": "Halo"
+        },
+        {
+            "word": "Some trees flourish, others die. Some cattle grow strong, others are taken by wolves. Some men are born rich enough and dumb enough to enjoy their lives. Ain't nothing fair.",
+            "source": "John Marston, Red Dead Redemption"
+        },
+        {
+            "word": "The right man in the wrong place can make all the difference in the world." ,
+            "source": "G-Man, Half-Life 2"
+        },
+        {
+            "word": "Bring me a bucket, and I'll show you a bucket!" ,
+            "source": "Psycho, Borderlands 2"
+        },
+        {
+            "word": "Wanting something does not give you the right to have it." ,
+            "source": "Ezio Auditore, Assassin's Creed 2"
+        },
+        {
+            "word": "Even in dark times, we cannot relinquish the things that make us human." ,
+            "source": "Khan, Metro 2033"
+        },
+        {
+            "word": "How many are there in you? Whose hopes and dreams do you encompass? Could you but see the eyes in your own, the minds in your mind, you would see how much we share." ,
+            "source": "Vortigaunt, Half-Life 2"
+        },
+        {
+            "word": "You can't break a man the way you break a dog, or a horse. The harder you beat a man, the taller he stands." ,
+            "source": "The Jackal, Far Cry 2"
+        },
+        {
+            "word": "It's time to kick ass and chew bubblegum... and I'm all outta gum.",
+            "source": "Duke Nukem, Duke Nukem 3D"
+        },
+        {
+            "word": "Life is cruel. Of this I have no doubt. One can only hope that one leaves behind a lasting legacy. But so often, the legacies we leave behind... are not the ones we intended." ,
+            "source": "Queen Myrrah, Gears of War 2"
+        },
+        {
+            "word": "If our lives are already written, it would take a courageous man to change the script.",
+            "source": "Alan Wake, Alan Wake"
+        },
+        {
+            "word": "It's easy to forget what a sin is in the middle of a battlefield.",
+            "source": "Solid Snake, Metal Gear Solid"
+        },
+        {
+            "word": "You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy, when all along you were my best friend. The surge of emotion that shot through me when I saved your life taught me an even more valuable lesson - where Caroline lives in my brain.",
+            "source": "GLaDOS, Portal 2"
+        },
+        {
+            "word": "Don't wish it were easier, wish you were better.",
+            "source": "Chief, Animal Crossing"
+        },
+        {
+            "word": "The world fears the inevitable plummet into the abyss. Watch for that moment and when it comes, do not hesitate to leap. It is only when you fall that you learn whether you can fly.",
+            "source": "Flemeth, Dragon Age Origins"
+        },
+        {
+            "word": "Trust me.",
+            "source": "BT-7274, Titanfall 2"
+        },
+        {
+            "word": "If history only remembers one in a thousands of us, then the future will be filled with stories of who we were and what we did." ,
+            "source": "Battlefield 1"
+        },
+        {
+            "word": "Good men mean well. We just don't always end up doing well." ,
+            "source": "Isaac Clarke, Dead Space 3"
+        },
+        {
+            "word": "You can't undo what you've already done, but you can face up to it." ,
+            "source": "Frank Coleridge, Silent Hill: Downpour"
+        },
+        {
+            "word": "Do a barrel roll!" ,
+            "source": "Star Fox 64"
+        },
+        {
+            "word": "No matter how dark the night, morning always comes, and our journey begins anew.",
+            "source": "Lulu, Final Fantasy 10"
+        },
+        {
+            "word": "Hope is what makes us strong. It is why we are here. It is what we fight with when all else is lost.",
+            "source": "Pandora, God of War 3"
+        },
+        {
+            "word": "A sword wields no strength unless the hands that holds it has courage.",
+            "source": "The Hero's Shade, Legend of Zelda: Twilight Princess"
+        },
+        {
+            "word": "You have died of dysentery." ,
+            "source": "The Oregon Trail"
+        },
+        {
+            "word": "I've struggled a long time with survivin', but no matter what you have to find something to fight for.",
+            "source": "Joel, The Last of Us"
+        }
+    ],
+    "pokemonNoises": [
+        {
+            "word": "Giygogagohgwooh!",
+            "source": "Giratina (Distortion World)"
+        },
+        {
+            "word": "Pika pika!",
+            "source": "Pikachu"
+        },
+        {
+            "word": "Gugyugabah!",
+            "source": "Dialga"
+        },
+        {
+            "word": "Delelelelewhoooooop!!!",
+            "source": "Kricketune"
+        },
+        {
+            "word": "Gyaoo!",
+            "source": "Moltres, Zapdos, Articuno"
+        },
+        {
+            "word": "Shaoooh!",
+            "source": "Ho-oh"
+        },
+        {
+            "word": "Gyaaas!",
+            "source": "Lugia"
+        },
+        {
+            "word": "Mew!",
+            "source": "Mewtwo"
+        },
+        {
+            "word": "Myuu...",
+            "source": "Mew"
+        },
+        {
+            "word": "Gagyagyaah!",
+            "source": "Palkia"
+        },
+        {
+            "word": "Gugyugubah!",
+            "source": "Dialga"
+        },
+        {
+            "word": "Kyauun.",
+            "source": "Mespirit"
+        },
+        {
+            "word": "Kyuuun....",
+            "source": "Azelf"
+        },
+        {
+            "word": "Kyouuuun!",
+            "source": "Uxie"
+        },
+        {
+            "word": "Gwogobo gwobobobo!",
+            "source": "Heatran"
+        },
+        {
+            "word": "...Zut zutt!",
+            "source": "Regigas"
+        },
+        {
+            "word": "Bishaan!",
+            "source": "Giratina"
+        },
+        {
+            "word": "Kyuu uuhn.",
+            "source": "Shaymin"
+        },
+        {
+            "word": "Dodogyuuun!",
+            "source": "Arceus"
+        },
+        {
+            "word": "Zaza zari za...",
+            "source": "Regirock"
+        },
+        {
+            "word": "Jakiih!",
+            "source": "Regice"
+        },
+        {
+            "word": "Ji-ji-ze-ji-zoh.",
+            "source": "Registeel"
+        },
+        {
+            "word": "Gyararoooah!",
+            "source": "Kyogre"
+        },
+        {
+            "word": "Grrgggrrrrah!",
+            "source": "Groudon"
+        },
+        {
+            "word": "Kiyuryursheeah!",
+            "source": "Rayquaza"
+        },
+        {
+            "word": "Kawbraa!",
+            "source": "Cobalion"
+        },
+        {
+            "word": "Aeepraaa!",
+            "source": "Virizion"
+        },
+        {
+            "word": "Gurooooohhh!",
+            "source": "Terrakion"
+        },
+        {
+            "word": "Preeeeaah!",
+            "source": "Reshiram"
+        },
+        {
+            "word": "Bazzazzazzash",
+            "source": "Zekrom"
+        },
+        {
+            "word": "Haaahraaan",
+            "source": "Kyurem"
+        },
+        {
+            "word": "Whhhwhhhwhhh!!",
+            "source": "Tornadus"
+        },
+        {
+            "word": "Krrrkrrrkrrak!",
+            "source": "Thundurus"
+        }
     ]
 }

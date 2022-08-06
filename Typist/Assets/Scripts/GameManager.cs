@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     string targetWord;
     int index;
     bool isPaused;
-    const float GAME_DURATION = 10;
+    const float GAME_DURATION = 30;
 
     [SerializeField]
     GameObject pausePanel;
@@ -86,9 +85,10 @@ public class GameManager : MonoBehaviour
 
     public void startNewWord()
     {
-        targetWord = wordBankManager.getRandomWord();
+        Word wordToType = wordBankManager.getRandomWord();
+        targetWord = wordToType.word;
         index = 0;
-        wordUIManager.loadTargetWord(targetWord);
+        wordUIManager.loadTargetWord(wordToType);
     }
 
     void checkLetter(char c)

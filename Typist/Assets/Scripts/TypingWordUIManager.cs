@@ -8,29 +8,34 @@ public class TypingWordUIManager : MonoBehaviour
 {
     public TMP_Text targetWordText;
     public TMP_Text typedWordText;
+    public TMP_Text sourceText;
 
-    string targetWord;
+    Word targetWord;
     string typedWord;
     string remWord; // remaining word
+    string source;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        targetWord = new Word("", "");
     }
 
     // Update is called once per frame
     void Update()
     {
-        targetWordText.text = targetWord;
-        typedWordText.text = "<b>" + typedWord + "</b>";
+        targetWordText.text = targetWord.word;
+        typedWordText.text = typedWord;
+        sourceText.text = "- " + targetWord.source;
     }
 
-    public void loadTargetWord(string word)
+    public void loadTargetWord(Word word)
     {
+
         targetWord = word;
         typedWord = "";
-        remWord = word;
+        remWord = word.word;
+
     }
 
     public void addCorrectLetter(char c)
