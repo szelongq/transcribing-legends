@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     const float GAME_DURATION = 10;
 
     [SerializeField]
+    GameObject pausePanel;
+
+    [SerializeField]
     TypingWordUIManager wordUIManager;
 
     [SerializeField]
@@ -45,11 +48,13 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        timeManager.PauseTimer();
         isPaused = true;
     }
 
     public void ResumeGame()
     {
+        timeManager.ResumeTimer();
         isPaused = false;
     }
 
@@ -107,8 +112,21 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (isPaused && pausePanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResumeGame();
+            pausePanel.SetActive(false);
+            return;
+        }
+
         if (!isPaused)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+                pausePanel.SetActive(true);
+                return;
+            }
             if (Input.inputString.Length > 0)
             {
                 Debug.Log("Typed: " + Input.inputString);
