@@ -15,22 +15,21 @@ public class WordBankManager : MonoBehaviour
     [SerializeField]
     WordBank wordBank;
 
+    string[] currWordLib;
+
     void Awake()
     {
         wordBankDir = Path.Combine(Application.streamingAssetsPath, wordBankFolderName);
         wordBankFile = Path.Combine(Application.streamingAssetsPath, wordBankFolderName,
             wordBankFileName);  // WordBank/WordBank.json
         loadWordBank();
-    }
-
-    void Start()
-    {
-        
+        UseNormalWordLib();
+        UsePokemonNoisesWordLib();
     }
 
     public string getRandomWord()
     {
-        return wordBank.words[Random.Range(0, wordBank.words.Length)];
+        return currWordLib[Random.Range(0, currWordLib.Length)];
     }
 
     public void loadWordBank()
@@ -65,6 +64,16 @@ public class WordBankManager : MonoBehaviour
 
         // Write JSON to file.
         File.WriteAllText(wordBankFile, wordBankJson);
+    }
+
+    public void UseNormalWordLib()
+    {
+        currWordLib = wordBank.words;
+    }
+
+    public void UsePokemonNoisesWordLib()
+    {
+        currWordLib = wordBank.pokemonNoises;
     }
 }
 

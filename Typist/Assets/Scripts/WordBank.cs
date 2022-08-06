@@ -7,5 +7,6 @@ public class WordBank
 {
     public string[] words;
 
-
+    public string[] pokemonNoises;
+    
 }
