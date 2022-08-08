@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void startNewWord()
     {
-        Word wordToType = wordBankManager.getRandomWord();
+        Word wordToType = wordBankManager.GetRandomWord();
         targetWord = wordToType.word;
         index = 0;
         wordUIManager.loadTargetWord(wordToType);
@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         else
         {
             wordUIManager.addWrongLetter(targetWord[index]);
+            // wordUIManager.addWrongLetter(c);
             scoreManager.addWrongChar();
         }
         index += 1;

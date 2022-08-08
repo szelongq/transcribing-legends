@@ -8,7 +8,10 @@ public class TypingWordUIManager : MonoBehaviour
 {
     public TMP_Text targetWordText;
     public TMP_Text typedWordText;
-    public TMP_Text sourceText;
+    public TMP_Text wordSourceText;
+
+    [SerializeField]
+    TMP_FontAsset[] sourceTextFonts;
 
     Word targetWord;
     string typedWord;
@@ -26,7 +29,7 @@ public class TypingWordUIManager : MonoBehaviour
     {
         targetWordText.text = targetWord.word;
         typedWordText.text = typedWord;
-        sourceText.text = "- " + targetWord.source;
+        wordSourceText.text = "- " + targetWord.source;
     }
 
     public void loadTargetWord(Word word)
@@ -36,6 +39,14 @@ public class TypingWordUIManager : MonoBehaviour
         typedWord = "";
         remWord = word.word;
 
+        SetRandomSourceTextFont();
+    }
+
+    public void SetRandomSourceTextFont()
+    {
+        TMP_FontAsset randFont = sourceTextFonts[Random.Range(0, sourceTextFonts.Length)];
+        targetWordText.font = randFont;
+        wordSourceText.font = randFont;
     }
 
     public void addCorrectLetter(char c)

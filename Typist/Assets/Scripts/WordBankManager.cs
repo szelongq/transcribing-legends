@@ -13,7 +13,6 @@ public class WordBankManager : MonoBehaviour
     string wordBankDir;
     string wordBankFile;
 
-    [SerializeField]
     WordBank wordBank;
 
     Word[] currWordLib;
@@ -23,17 +22,19 @@ public class WordBankManager : MonoBehaviour
         wordBankDir = Path.Combine(Application.streamingAssetsPath, wordBankFolderName);
         wordBankFile = Path.Combine(Application.streamingAssetsPath, wordBankFolderName,
             wordBankFileName);  // WordBank/WordBank.json
-        loadWordBankFromWeb();
+
+        LoadWordBankFromLocal();
+        // LoadWordBankFromWeb();
+
         UseNormalWordLib();
-        UsePokemonNoisesWordLib();
     }
 
-    public Word getRandomWord()
+    public Word GetRandomWord()
     {
         return currWordLib[Random.Range(0, currWordLib.Length)];
     }
 
-    public void loadWordBankFromLocal()
+    public bool LoadWordBankFromLocal()
     {
         // creates WordBank folder if not exists
         Directory.CreateDirectory(wordBankDir);    
@@ -48,18 +49,21 @@ public class WordBankManager : MonoBehaviour
             wordBank = JsonUtility.FromJson<WordBank>(fileContents);
 
             Debug.Log("WordBank loaded: " + wordBank);
+            return true;
         }
         else
         {
             Debug.Log("WordBank file not found in " + wordBankFile);
+            return false;
         }
     }
 
-    public void loadWordBankFromWeb()
+    public IEnumerator LoadWordBankFromWeb()
     {
-        StartCoroutine(GetRequest(wordBankFile));
+        yield return StartCoroutine(GetRequest(wordBankFile));
     }
 
+    // Taken from Unity Docs example code
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -81,19 +85,19 @@ public class WordBankManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                    loadWordBank(webRequest.downloadHandler.text);
+                    LoadWordBank(webRequest.downloadHandler.text);
                     break;
             }
         }
     }
 
-    public void loadWordBank(string wordBankJson)
+    public void LoadWordBank(string wordBankJson)
     {
         // Deserialize JSON
             wordBank = JsonUtility.FromJson<WordBank>(wordBankJson);
     }
 
-    public void saveWordBank()
+    public void SaveWordBank()
     {
         // creates WordBank folder if not exists
         Directory.CreateDirectory(wordBankDir);    
