@@ -23,8 +23,8 @@ public class WordBankManager : MonoBehaviour
         wordBankFile = Path.Combine(Application.streamingAssetsPath, wordBankFolderName,
             wordBankFileName);  // WordBank/WordBank.json
 
-        LoadWordBankFromLocal();
-        // LoadWordBankFromWeb();
+        // LoadWordBankFromLocal();
+        LoadWordBankFromWeb();
 
         UseNormalWordLib();
     }
@@ -58,9 +58,9 @@ public class WordBankManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadWordBankFromWeb()
+    public void LoadWordBankFromWeb()
     {
-        yield return StartCoroutine(GetRequest(wordBankFile));
+        StartCoroutine(GetRequest(wordBankFile));
     }
 
     // Taken from Unity Docs example code
