@@ -2,6 +2,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class WordBankManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class WordBankManager : MonoBehaviour
         wordBankDir = Path.Combine(Application.streamingAssetsPath, wordBankFolderName);
         wordBankFile = Path.Combine(Application.streamingAssetsPath, wordBankFolderName,
             wordBankFileName);  // WordBank/WordBank.json
-        loadWordBank();
+        loadWordBankFromWeb();
         UseNormalWordLib();
         UsePokemonNoisesWordLib();
     }
@@ -32,7 +33,7 @@ public class WordBankManager : MonoBehaviour
         return currWordLib[Random.Range(0, currWordLib.Length)];
     }
 
-    public void loadWordBank()
+    public void loadWordBankFromLocal()
     {
         // creates WordBank folder if not exists
         Directory.CreateDirectory(wordBankDir);    
@@ -52,6 +53,44 @@ public class WordBankManager : MonoBehaviour
         {
             Debug.Log("WordBank file not found in " + wordBankFile);
         }
+    }
+
+    public void loadWordBankFromWeb()
+    {
+        StartCoroutine(GetRequest(wordBankFile));
+    }
+
+    IEnumerator GetRequest(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    loadWordBank(webRequest.downloadHandler.text);
+                    break;
+            }
+        }
+    }
+
+    public void loadWordBank(string wordBankJson)
+    {
+        // Deserialize JSON
+            wordBank = JsonUtility.FromJson<WordBank>(wordBankJson);
     }
 
     public void saveWordBank()
