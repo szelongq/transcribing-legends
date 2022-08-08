@@ -32,3 +32,7 @@ Try it out at: https://draquon.itch.io/transcribing-legends
 [Florian Stracker / stracker.org, Unity Asset Store](https://assetstore.unity.com/packages/audio/music/electronic/retro-fit-adventure-free-8-bit-video-game-music-205627) : BGM for Main Menu, Main Game, Results Screen
 
 [Google Fonts](https://fonts.google.com/) : Fonts for all Game UI, from Buttons to the Source Text
+
+[GamesRadar+](https://www.gamesradar.com/best-video-game-quotes-all-time/) : Game Quotes
+
+[Mixeli / Youtube](https://www.youtube.com/watch?v=2M6owZ05h74) : Pokemon Cries
