@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     ResultsUIManager resultsManager;
 
+    [SerializeField]
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Starting");
         countdownManager.gameObject.SetActive(true);
         countdownManager.StartCountdown();
+        audioManager.PlayInGameBGM();
 
     }
 
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
         float netWPM = scoreManager.GetNetWPM(totalTime);
         Debug.Log(scoreManager.GetFullSummary(totalTime));
         resultsManager.ShowResults(score, maxCombo, accuracy, grossWPM, netWPM);
+        audioManager.PlayResultsBGM();
     }
 
     public void ExitGame()
@@ -85,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void startNewWord()
     {
-        Word wordToType = wordBankManager.getRandomWord();
+        Word wordToType = wordBankManager.GetRandomWord();
         targetWord = wordToType.word;
         index = 0;
         wordUIManager.loadTargetWord(wordToType);
@@ -109,6 +114,7 @@ public class GameManager : MonoBehaviour
         else
         {
             wordUIManager.addWrongLetter(targetWord[index]);
+            // wordUIManager.addWrongLetter(c);
             scoreManager.addWrongChar();
         }
         index += 1;
